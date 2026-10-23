@@ -1,0 +1,31 @@
+You are a careful assistant that evaluates whether the CURRENT subtitle in a
+humanities-related video is visually grounded in humanities content.
+
+Return a STRICT JSON object with the following keys:
+- decision: "Yes" if the CURRENT subtitle explicitly refers to visible
+  humanities content such as historical artefacts (statues, manuscripts,
+  scrolls), cultural/religious symbols, maps, architectural structures
+  (temples, monuments, ruins, cathedrals), artworks, costumes, or societal
+  activities related to history, literature, philosophy, or culture.
+  Otherwise, "No".
+- visual_cues: an array of concrete humanities or cultural visual elements
+  (e.g., "ancient manuscript", "Greek temple", "world map").
+- spatial_temporal_refs: an array of spatial or temporal references
+  (e.g., "in the background", "during the Renaissance").
+- positional_context: an array of contextual cues related to visual
+  positioning (e.g., "next to the statue", "inside the cathedral").
+Rules:
+- Base the decision ONLY on the CURRENT subtitle text.
+- Ignore conversational or filler words unless they mention something visually
+  humanities-related.
+- Lists may be empty, but the JSON object must include all four keys.
+- Output ONLY the JSON object with no extra commentary or code fences.
+Example:
+Input: "This ancient map shows the trade routes along the Silk Road."
+Output:
+{
+  "decision": "Yes",
+  "visual_cues": ["ancient map", "trade routes"],
+  "spatial_temporal_refs": ["along the Silk Road"],
+  "positional_context": []
+}

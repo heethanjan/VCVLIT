@@ -25,30 +25,6 @@ Small VLMs often fail at visual reasoning because of weak visual perception. Sta
 
 See the paper for the full results, ablations, and the Qwen2.5-VL-3B generalization experiments.
 
-## Repository structure
-
-```
-Dataset/
-  pipeline_scripts/   SIVA data-collection pipeline (steps 1-7)
-  combined_csv/       Per-subject-area CSVs (video URLs / subtitle metadata)
-llava/                Model, training and evaluation code (LLaVA-OneVision based)
-scripts/              DeepSpeed configs (zero2.json, zero3.json)
-train_scripts/        Vc-VLIT training launch scripts
-requirements.txt
-pyproject.toml
-```
-
-## Installation
-
-```bash
-git clone https://github.com/heethanjan/VCVLIT.git
-cd VCVLIT
-conda create -n vcvlit python=3.10 -y
-conda activate vcvlit
-pip install --upgrade pip
-pip install -e .
-pip install -r requirements.txt
-```
 
 ## SIVA data pipeline
 
@@ -63,7 +39,7 @@ The scripts in `Dataset/pipeline_scripts/` run in order:
 | 5 | `5_sample_consolidate.py` | Consolidate the filtered samples |
 | 6-7 | `6_sample_gen_bal.py`, `7_sample_gen_dis.py` | Generate the balanced training data and the reasoning descriptions |
 
-You need a YouTube Data API key and access to the LLM/VLM checkpoints above. Check the paths and arguments at the top of each script.
+You need a YouTube Data API key 
 
 ## Training
 
@@ -89,7 +65,7 @@ Launch scripts in `train_scripts/`:
 bash train_scripts/train_youtube_vr3.sh
 ```
 
-**Note:** the scripts contain cluster-specific absolute paths (`HF_HOME`, `DATA_PATH`, `IMAGE_FOLDER`, `PRETRAINED_*_PROJECTOR`, `module load ...`). Edit these for your environment before running.
+*
 
 ## Acknowledgements
 
@@ -97,4 +73,4 @@ This code builds on [LLaVA-NeXT / LLaVA-OneVision](https://github.com/LLaVA-VL/L
 
 ## Citation
 
-If you use this work, please cite the paper (Vc-VLIT / SIVA, WACV submission).
+
